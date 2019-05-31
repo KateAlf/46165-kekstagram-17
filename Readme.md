@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Катерина Турапина](https://up.htmlacademy.ru/javascript/17/user/46165).
-* Наставник: `Неизвестно`.
+* Наставник: Олег Акинин
 
 ---
 
