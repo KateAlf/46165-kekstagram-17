@@ -19,7 +19,6 @@ var userNames = [
   'Тихон'
 ];
 
-// Функция вычисления случайного числа
 var getRandom = function (min, max) {
   var rand = Math.floor(Math.random() * (max - min) + min);
   return rand;
@@ -30,7 +29,6 @@ var getCommentIndex = function () {
   return userComments[randomComment];
 };
 
-// Функция создания объекта с комментариями
 var createObjectComments = function () {
   var objectComments = [];
   for (var i = 0; i < userNames.length; i++) {
@@ -43,7 +41,6 @@ var createObjectComments = function () {
   return objectComments;
 };
 
-// Функция создания объекта с фото
 var createUserPhotos = function () {
   var userPhotos = [];
   for (var i = 1; i <= PHOTOS_AMOUNT; i++) {
