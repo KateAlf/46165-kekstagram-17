@@ -19,7 +19,7 @@ var userNames = [
   'Тихон'
 ];
 
-//Функция вычисления случайного числа
+// Функция вычисления случайного числа
 var getRandom = function (min, max) {
   var rand = Math.floor(Math.random() * (max - min) + min);
   return rand;
@@ -38,13 +38,13 @@ var createObjectComments = function () {
       avatar: 'img/avatar-' + (i + 1) + '.svg',
       message: getCommentIndex(),
       name: userNames[getRandom(i, userNames.length - 1)]
-    })
+    });
   }
   return objectComments;
 };
 
 // Функция создания объекта с фото
-var createUserPhotos = function (count) {
+var createUserPhotos = function () {
   var userPhotos = [];
   for (var i = 1; i <= PHOTOS_AMOUNT; i++) {
     userPhotos.push({
