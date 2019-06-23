@@ -25,9 +25,10 @@ var getRandom = function (min, max) {
 };
 
 var getCommentIndex = function () {
-  var randomComment = Math.floor(Math.random() * userComments.length);
+  var randomComment = getRandom(0, userComments.length);
   return userComments[randomComment];
 };
+
 
 var createObjectComments = function () {
   var objectComments = [];
@@ -43,9 +44,9 @@ var createObjectComments = function () {
 
 var createUserPhotos = function () {
   var userPhotos = [];
-  for (var i = 1; i <= PHOTOS_AMOUNT; i++) {
+  for (var i = 0; i < PHOTOS_AMOUNT; i++) {
     userPhotos.push({
-      url: 'photos/' + i + '.jpg',
+      url: 'photos/' + (i + 1) + '.jpg',
       likes: getRandom(15, 200),
       comments: getCommentIndex()
     });
@@ -54,7 +55,6 @@ var createUserPhotos = function () {
 };
 
 var renderUserImages = function () {
-
   var photos = createUserPhotos(PHOTOS_AMOUNT);
   var pictureTemplate = document.querySelector('#picture')
     .content
