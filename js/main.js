@@ -76,7 +76,6 @@ var renderUserImages = function () {
   for (var i = 0; i < photos.length; i++) {
     fragment.appendChild(renderPhoto(photos[i]));
   }
-
   picturesTitleElement.appendChild(fragment);
 };
 
