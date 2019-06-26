@@ -36,7 +36,7 @@ var createObjectComments = function () {
     objectComments.push({
       avatar: 'img/avatar-' + (i + 1) + '.svg',
       message: getCommentIndex(),
-      name: userNames[getRandom(i, userNames.length - 1)]
+      name: userNames[getRandom(i, userNames.length)]
     });
   }
   return objectComments;
