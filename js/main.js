@@ -62,7 +62,6 @@ var renderUserImages = function () {
 
   var picturesTitleElement = document.querySelector('.pictures');
   var fragment = document.createDocumentFragment();
-
   var renderPhoto = function (photo) {
     var pictureElement = pictureTemplate.cloneNode(true);
 
