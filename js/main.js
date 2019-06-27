@@ -24,7 +24,7 @@ var getRandom = function (min, max) {
   return rand;
 };
 
-var getCommentIndex = function () {
+var getComment = function () {
   var randomComment = getRandom(0, userComments.length);
   return userComments[randomComment];
 };
@@ -33,11 +33,13 @@ var getCommentIndex = function () {
 var createObjectComments = function () {
   var objectComments = [];
   for (var i = 0; i < userNames.length; i++) {
-    objectComments.push({
-      avatar: 'img/avatar-' + (i + 1) + '.svg',
-      message: getCommentIndex(),
-      name: userNames[getRandom(i, userNames.length)]
-    });
+    if (Math.random() > 0.5) {
+      objectComments.push({
+        avatar: 'img/avatar-' + (i + 1) + '.svg',
+        message: getComment(),
+        name: userNames[getRandom(i, userNames.length)]
+      });
+    }
   }
   return objectComments;
 };
@@ -48,29 +50,31 @@ var createUserPhotos = function () {
     userPhotos.push({
       url: 'photos/' + (i + 1) + '.jpg',
       likes: getRandom(15, 200),
-      comments: getCommentIndex()
+      comments: createObjectComments()
     });
   }
   return userPhotos;
 };
 
-var renderUserImages = function () {
-  var photos = createUserPhotos(PHOTOS_AMOUNT);
+var renderPhoto = function (photo) {
+
   var pictureTemplate = document.querySelector('#picture')
     .content
     .querySelector('.picture');
 
+  var pictureElement = pictureTemplate.cloneNode(true);
+
+  pictureElement.querySelector('.picture__img').src = photo.url;
+  pictureElement.querySelector('.picture__comments').textContent = photo.comments.length;
+  pictureElement.querySelector('.picture__likes').textContent = photo.likes;
+
+  return pictureElement;
+};
+
+var renderUserImages = function () {
+  var photos = createUserPhotos(PHOTOS_AMOUNT);
   var picturesTitleElement = document.querySelector('.pictures');
   var fragment = document.createDocumentFragment();
-  var renderPhoto = function (photo) {
-    var pictureElement = pictureTemplate.cloneNode(true);
-
-    pictureElement.querySelector('.picture__img').src = photo.url;
-    pictureElement.querySelector('.picture__comments').textContent = photo.comments;
-    pictureElement.querySelector('.picture__likes').textContent = photo.likes;
-
-    return pictureElement;
-  };
 
   for (var i = 0; i < photos.length; i++) {
     fragment.appendChild(renderPhoto(photos[i]));
