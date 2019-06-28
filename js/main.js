@@ -83,3 +83,88 @@ var renderUserImages = function () {
 };
 
 renderUserImages();
+
+var formUpload = document.getElementById('upload-file');
+var imgUpload = document.querySelector('.img-upload__overlay');
+var cancelUpload = document.getElementById('upload-cancel');
+
+formUpload.addEventListener('change', function() {
+  imgUpload.classList.remove('hidden');
+});
+
+cancelUpload.addEventListener('click', function() {
+  imgUpload.classList.add('hidden');
+});
+
+cancelUpload.addEventListener('keydown', function(evt) {
+  
+  if (evt.keyCode === 27) {
+    imgUpload.classList.add('hidden');
+  }
+});
+
+var effectsList = document.querySelector('.effects__list');
+var effectsSlider = document.querySelector('.img-upload__effect-level');
+var imgPreview = document.querySelector('.img-upload__preview');
+var currentEffect = '';
+
+effectsSlider.classList.add('hidden');
+
+var addEffectToImg = function (effect) {
+  imgPreview.classList.remove('effects__preview--' + currentEffect);
+  imgPreview.classList.add('effects__preview--' + effect);
+  effectsSlider.classList.remove('hidden');
+  currentEffect = effect;
+};
+
+effectsList.addEventListener('click', function (evt) {
+  var target = evt.target;
+  if (target.tagName === 'INPUT') {
+    var targetEffect = target.value;
+    addEffectToImg(targetEffect);
+  }
+});
+
+var scaleControlSmaller = document.querySelector('.scale__control--smaller');
+var scaleControlBigger = document.querySelector('.scale__control--bigger');
+var scaleControlValue = document.querySelector('.scale__control--value');
+
+var VALUE_MIN = 25;
+var VALUE_STEP = 25;
+var VALUE_MAX = 100;
+var intScaleValue = parseInt(scaleControlValue.value, 10);
+
+var increaseValue = function () {
+
+  if (scaleControlValue.value < VALUE_MAX) {
+    intScaleValue = intScaleValue + VALUE_STEP;
+    scaleControlValue.value = intScaleValue;
+  }
+  console.log(intScaleValue);
+  transformUploadPreview(scaleControlValue.value);
+
+};
+
+var decreaseValue = function () {
+
+  if (scaleControlValue.value > VALUE_MIN) {
+    scaleControlValue -= VALUE_STEP;
+  }
+  transformUploadPreview(scaleControlValue.value);
+};
+
+var transformUploadPreview = function (value) {
+  if (value === '100') {
+    imgPreview.style.transform = 'scale(1)';
+  } else {
+    imgPreview.style.transform = 'scale(0.' + value + ')';
+  }
+};
+
+scaleControlBigger.addEventListener('click', function () {
+  increaseValue();
+});
+
+scaleControlSmaller.addEventListener('click', function () {
+  decreaseValue();
+});
