@@ -88,16 +88,16 @@ var formUpload = document.getElementById('upload-file');
 var imgUpload = document.querySelector('.img-upload__overlay');
 var cancelUpload = document.getElementById('upload-cancel');
 
-formUpload.addEventListener('change', function() {
+formUpload.addEventListener('change', function () {
   imgUpload.classList.remove('hidden');
 });
 
-cancelUpload.addEventListener('click', function() {
+cancelUpload.addEventListener('click', function () {
   imgUpload.classList.add('hidden');
 });
 
-cancelUpload.addEventListener('keydown', function(evt) {
-  
+cancelUpload.addEventListener('keydown', function (evt) {
+
   if (evt.keyCode === 27) {
     imgUpload.classList.add('hidden');
   }
@@ -140,7 +140,6 @@ var increaseValue = function () {
     intScaleValue = intScaleValue + VALUE_STEP;
     scaleControlValue.value = intScaleValue;
   }
-  console.log(intScaleValue);
   transformUploadPreview(scaleControlValue.value);
 
 };
