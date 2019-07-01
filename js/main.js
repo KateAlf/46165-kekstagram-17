@@ -134,7 +134,6 @@ var zoomImg = function () {
   var scaleControlBigger = document.querySelector('.scale__control--bigger');
   var scaleControlValue = document.querySelector('.scale__control--value');
 
-  var VALUE_MIN = 25;
   var VALUE_BEGINNING = 0;
   var VALUE_STEP = 25;
   var VALUE_MAX = 100;
