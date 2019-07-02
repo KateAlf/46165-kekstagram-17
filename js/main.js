@@ -178,11 +178,10 @@ var zoomImg = function () {
   });
 };
 
-var applyEffectIntensity {
+/* var applyEffectIntensity = function () {
   var effectsSliderPin = document.querySelector('.effect-level__pin');
-  
-}
-
+};
+*/
 renderUserImages();
 showUploadForm();
 zoomImg();
