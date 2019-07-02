@@ -104,6 +104,7 @@ var showUploadForm = function () {
 };
 
 var imgPreview = document.querySelector('.img-upload__preview');
+
 var applyEffect = function () {
 
   var effectsList = document.querySelector('.effects__list');
@@ -177,6 +178,10 @@ var zoomImg = function () {
   });
 };
 
+var applyEffectIntensity {
+  var effectsSliderPin = document.querySelector('.effect-level__pin');
+  
+}
 
 renderUserImages();
 showUploadForm();
