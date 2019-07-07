@@ -82,10 +82,13 @@ var renderUserImages = function () {
   picturesTitleElement.appendChild(fragment);
 };
 
+var imgUpload = document.querySelector('.img-upload__overlay');
+var imgPreview = document.querySelector('.img-upload__preview');
+
 var showUploadForm = function () {
   var formUpload = document.getElementById('upload-file');
-  var imgUpload = document.querySelector('.img-upload__overlay');
   var cancelUpload = document.getElementById('upload-cancel');
+  var commentInput = document.querySelector('.text__description');
 
   formUpload.addEventListener('change', function () {
     imgUpload.classList.remove('hidden');
@@ -103,9 +106,7 @@ var showUploadForm = function () {
   });
 };
 
-var imgPreview = document.querySelector('.img-upload__preview');
-
-var applyEffect = function () {
+var applyEffectSwitcher = function () {
 
   var effectsList = document.querySelector('.effects__list');
   var effectsSlider = document.querySelector('.img-upload__effect-level');
@@ -129,7 +130,7 @@ var applyEffect = function () {
   });
 };
 
-var zoomImg = function () {
+var zoomImgSwitcher = function () {
 
   var scaleControlSmaller = document.querySelector('.scale__control--smaller');
   var scaleControlBigger = document.querySelector('.scale__control--bigger');
@@ -177,15 +178,14 @@ var zoomImg = function () {
     decreaseValue();
   });
 };
+
 var WIDTH_OF_LEVEL_LINE = 450;
 var PERCENT = 100;
 var effectsSliderPin = document.querySelector('.effect-level__pin');
-var effectsLevelLine = document.querySelector('.effect-level__line');
 var effectLevelDepth = document.querySelector('.effect-level__depth');
 var effectLevelInput = document.querySelector('.effect-level__value');
 
 var applyEffectIntensity = function () {
-
 
   effectsSliderPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
@@ -214,12 +214,37 @@ var applyEffectIntensity = function () {
       } else {
         pinCoordinate = nextCoordinate + 'px';
       }
+
+      var effectsListClass = imgPreview;
       effectsSliderPin.style.left = pinCoordinate;
       effectLevelDepth.style.width = effectsSliderPin.style.left;
-      effectLevelInput.value = Math.round(effectLevelDepth.offsetWidth * PERCENT / WIDTH_OF_LEVEL_LINE);
+      effectLevelInput.value = (effectsSliderPin.offsetLeft / WIDTH_OF_LEVEL_LINE).toFixed(2) * PERCENT;
 
+      switch (effectsListClass.classList[1]) {
+        case 'effects__preview--chrome':
+          imgPreview.style.filter =
+            'grayscale(' + parseInt(effectLevelInput.value, 10) / 100 + ')';
+          break;
+        case 'effects__preview--sepia':
+          imgPreview.style.filter =
+            'sepia(' + effectLevelInput.value / 100 + ')';
+          break;
+        case 'effects__preview--marvin':
+          imgPreview.style.filter =
+            'invert(' + effectLevelInput.value + '%)';
+          break;
+        case 'effects__preview--phobos':
+          imgPreview.style.filter =
+            'blur(' + (effectLevelInput.value / 100) * 3 + 'px)';
+          break;
+        case 'effects__preview--heat':
+          imgPreview.style.filter =
+            'brightness(' +
+            (effectLevelInput.value / 100) * 3 +
+            ')';
+          break;
+      }
     };
-
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();
@@ -234,6 +259,6 @@ var applyEffectIntensity = function () {
 
 renderUserImages();
 showUploadForm();
-zoomImg();
-applyEffect();
+zoomImgSwitcher();
+applyEffectSwitcher();
 applyEffectIntensity();
