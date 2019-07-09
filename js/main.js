@@ -1,5 +1,8 @@
 'use strict';
 var PHOTOS_AMOUNT = 25;
+var ECS_KEY = 27;
+var WIDTH_OF_LEVEL_LINE = 450;
+var PERCENT = 100;
 
 var userComments = [
   'Всё отлично!',
@@ -57,7 +60,6 @@ var createUserPhotos = function () {
 };
 
 var renderPhoto = function (photo) {
-
   var pictureTemplate = document.querySelector('#picture')
     .content
     .querySelector('.picture');
@@ -84,6 +86,9 @@ var renderUserImages = function () {
 
 var imgUpload = document.querySelector('.img-upload__overlay');
 var imgPreview = document.querySelector('.img-upload__preview');
+var effectSliderPin = document.querySelector('.effect-level__pin');
+var effectLevelDepth = document.querySelector('.effect-level__depth');
+var effectLevelInput = document.querySelector('.effect-level__value');
 
 var showUploadForm = function () {
   var formUpload = document.getElementById('upload-file');
@@ -99,20 +104,11 @@ var showUploadForm = function () {
   });
 
   document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === 27 && !commentInput.matches(':focus')) {
+    if (evt.keyCode === ECS_KEY && !commentInput.matches(':focus')) {
       imgUpload.classList.add('hidden');
     }
   });
 };
-
-/*
-
-var resetSlider = function  () {
-  effectsSliderPin.style.left = '100%';
-  effectLevelDepth.style.width = '100%';
-  effectLevelInput.value = '100';
-};
-*/
 
 var applyEffectSwitcher = function () {
 
@@ -120,18 +116,17 @@ var applyEffectSwitcher = function () {
   var effectsSlider = document.querySelector('.img-upload__effect-level');
   var currentEffect = '';
 
-  // effectsSlider.classList.add('hidden');
+  effectsSlider.classList.add('hidden');
 
   var addEffectToImg = function (effect) {
     imgPreview.classList.remove('effects__preview--' + currentEffect);
     imgPreview.classList.add('effects__preview--' + effect);
-    //   effectsSlider.classList.remove('hidden');
+    effectsSlider.classList.remove('hidden');
     currentEffect = effect;
   };
 
   effectsList.addEventListener('click', function (evt) {
     var target = evt.target;
-
     if (target.tagName === 'INPUT') {
       var targetEffect = target.value;
       addEffectToImg(targetEffect);
@@ -159,8 +154,8 @@ var applyEffectSwitcher = function () {
         break;
     }
 
-    effectsSliderPin.style.left = '100%';
-    effectLevelDepth = '100%';
+    effectSliderPin.style.left = '100%';
+    effectLevelDepth.style.width = '100%';
   });
 };
 
@@ -180,7 +175,6 @@ var zoomImgSwitcher = function () {
 
   var decreaseValue = function () {
     var scaleSmaller = parseInt(scaleControlValue.value, 10) - VALUE_STEP;
-
     if (scaleSmaller <= VALUE_BEGINNING) {
       scaleSmaller = VALUE_BEGINNING;
       setZoomValue(VALUE_BEGINNING);
@@ -213,15 +207,9 @@ var zoomImgSwitcher = function () {
   });
 };
 
-var WIDTH_OF_LEVEL_LINE = 450;
-var PERCENT = 100;
-var effectsSliderPin = document.querySelector('.effect-level__pin');
-var effectLevelDepth = document.querySelector('.effect-level__depth');
-var effectLevelInput = document.querySelector('.effect-level__value');
-
 var applyEffectIntensity = function () {
 
-  effectsSliderPin.addEventListener('mousedown', function (evt) {
+  effectSliderPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
     var startCoords = {
@@ -238,7 +226,7 @@ var applyEffectIntensity = function () {
         x: moveEvt.clientX
       };
 
-      var nextCoordinate = effectsSliderPin.offsetLeft - shift.x;
+      var nextCoordinate = effectSliderPin.offsetLeft - shift.x;
       var pinCoordinate;
 
       if (nextCoordinate >= WIDTH_OF_LEVEL_LINE) {
@@ -250,9 +238,9 @@ var applyEffectIntensity = function () {
       }
 
       var effectsListClass = imgPreview;
-      effectsSliderPin.style.left = pinCoordinate;
-      effectLevelDepth.style.width = effectsSliderPin.style.left;
-      effectLevelInput.value = (effectsSliderPin.offsetLeft / WIDTH_OF_LEVEL_LINE).toFixed(2) * PERCENT;
+      effectSliderPin.style.left = pinCoordinate;
+      effectLevelDepth.style.width = effectSliderPin.style.left;
+      effectLevelInput.value = (effectSliderPin.offsetLeft / WIDTH_OF_LEVEL_LINE).toFixed(2) * PERCENT;
 
       switch (effectsListClass.classList[1]) {
         case 'effects__preview--chrome':
