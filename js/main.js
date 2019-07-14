@@ -1,8 +1,8 @@
 'use strict';
 var PHOTOS_AMOUNT = 25;
+var ECS_KEY = 27;
 var WIDTH_OF_LEVEL_LINE = 450;
 var PERCENT = 100;
-var ECS_KEY = 27;
 
 var userComments = [
   'Всё отлично!',
