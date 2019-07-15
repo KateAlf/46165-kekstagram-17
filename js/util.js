@@ -11,7 +11,7 @@
   var VALUE_MAX = 100;
   var URL = 'https://js.dump.academy/kekstagram/data';
   var userPhotos = [];
-  
+
   var imgUpload = document.querySelector('.img-upload__overlay');
   var imgPreview = document.querySelector('.img-upload__preview');
   var effectSliderPin = document.querySelector('.effect-level__pin');
@@ -37,5 +37,5 @@
     effectSliderPin: effectSliderPin,
     effectLevelDepth: effectLevelDepth,
     effectLevelInput: effectLevelInput
-  }
+  };
 })();

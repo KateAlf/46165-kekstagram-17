@@ -11,7 +11,6 @@
           window.util.userPhotos = xhr.response;
           onSuccess(window.util.userPhotos);
           break;
-
         case 400:
           window.onError('Не верный запрос');
           break;

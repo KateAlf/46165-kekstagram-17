@@ -1,9 +1,8 @@
-var zoomImgSwitcher = function () {
-
+'use strict';
+(function () {
   var scaleControlSmaller = document.querySelector('.scale__control--smaller');
   var scaleControlBigger = document.querySelector('.scale__control--bigger');
   var scaleControlValue = document.querySelector('.scale__control--value');
-  
   var setZoomValue = function (value) {
     scaleControlValue.value = value + '%';
   };
@@ -17,7 +16,7 @@ var zoomImgSwitcher = function () {
       setZoomValue(scaleSmaller);
     }
 
-    imgPreview.style.transform = 'scale(' + scaleSmaller / 100 + ')';
+    window.elements.imgPreview.style.transform = 'scale(' + scaleSmaller / 100 + ')';
   };
 
   var increaseValue = function () {
@@ -30,7 +29,7 @@ var zoomImgSwitcher = function () {
       setZoomValue(scaleBigger);
     }
 
-    imgPreview.style.transform = 'scale(' + scaleBigger / 100 + ')';
+    window.elements.imgPreview.style.transform = 'scale(' + scaleBigger / 100 + ')';
   };
 
   scaleControlBigger.addEventListener('click', function () {
@@ -40,4 +39,4 @@ var zoomImgSwitcher = function () {
   scaleControlSmaller.addEventListener('click', function () {
     decreaseValue();
   });
-};
+})();

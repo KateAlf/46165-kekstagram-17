@@ -3,7 +3,7 @@
 (function () {
   var formUpload = document.getElementById('upload-file');
   var cancelUpload = document.getElementById('upload-cancel');
-  var commentInput = document.querySelector('.text__description'); 
+  var commentInput = document.querySelector('.text__description');
   var hashtagsInput = document.querySelector('.text__hashtags');
 
   formUpload.addEventListener('change', function () {
@@ -15,9 +15,9 @@
   });
 
   document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.util.ESC_KEYCODE && 
-        !commentInput.matches(':focus') &&
-        !hashtagsInput.matches(':focus')) {
+    if (evt.keyCode === window.util.ESC_KEYCODE &&
+      !commentInput.matches(':focus') &&
+      !hashtagsInput.matches(':focus')) {
       window.elements.imgUpload.classList.add('hidden');
     }
   });
