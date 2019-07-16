@@ -8,8 +8,7 @@
     xhr.addEventListener('load', function () {
       switch (xhr.status) {
         case 200:
-          window.util.userPhotos = xhr.response;
-          onSuccess(window.util.userPhotos);
+          onSuccess(xhr.response);
           break;
         case 400:
           window.onError('Не верный запрос');
@@ -31,7 +30,6 @@
           );
       }
     });
-
     xhr.addEventListener('error', function () {
       window.onError('Произошла ошибка соединения');
     });
@@ -41,5 +39,6 @@
     xhr.timeout = 10000;
 
     xhr.open('GET', URL);
-  }();
+    xhr.send(null);
+  };
 })();

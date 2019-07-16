@@ -22,16 +22,20 @@
       addEffectToImg(targetEffect);
     }
 
+    var applyFilterSettings = function (element, effect, value) {
+      element.style.filter = effect + '(' + value + ')';
+    };
+
     switch (evt.target.value) {
       case 'none':
         window.elements.imgPreview.style.filter = '';
         effectsSlider.classList.add('hidden');
         break;
       case 'chrome':
-        window.elements.imgPreview.style.filter = 'grayscale(1)';
+        applyFilterSettings(window.elements.imgPreview, 'grayscale', 1);
         break;
       case 'sepia':
-        window.elements.imgPreview.style.filter = 'sepia(1)';
+        applyFilterSettings(window.elements.imgPreview, 'sepia', 1);
         break;
       case 'marvin':
         window.elements.imgPreview.style.filter = 'invert(100%)';
@@ -40,7 +44,7 @@
         window.elements.imgPreview.style.filter = 'blur(3px)';
         break;
       case 'heat':
-        window.elements.imgPreview.style.filter = 'brightness(3)';
+        applyFilterSettings(window.elements.imgPreview, 'brightness', 3);
         break;
     }
 

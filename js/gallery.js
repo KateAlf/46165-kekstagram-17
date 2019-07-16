@@ -1,59 +1,18 @@
 'use strict';
 
 (function () {
-  var userComments = [
-    'Всё отлично!',
-    'В целом всё неплохо. Но не всё.',
-    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-  ];
 
-  var userNames = [
-    'Семён',
-    'Степан',
-    'Ангелина',
-    'Мария',
-    'Афанасий',
-    'Тихон'
-  ];
-
-  var getRandom = function (min, max) {
-    var rand = Math.floor(Math.random() * (max - min) + min);
-    return rand;
-  };
-
-  var getComment = function () {
-    var randomComment = getRandom(0, userComments.length);
-    return userComments[randomComment];
-  };
-
-
-  var createObjectComments = function () {
-    var objectComments = [];
-    for (var i = 0; i < userNames.length; i++) {
-      if (Math.random() > 0.5) {
-        objectComments.push({
-          avatar: 'img/avatar-' + (i + 1) + '.svg',
-          message: getComment(),
-          name: userNames[getRandom(i, userNames.length)]
-        });
-      }
-    }
-    return objectComments;
-  };
-
-  var createUserPhotos = function () {
-
+  var createUserPhotos = function (userPhotos) {
+    var myUserPhotos = [];
     for (var i = 0; i < window.util.PHOTOS_AMOUNT; i++) {
-      window.util.userPhotos.push({
-        url: 'photos/' + (i + 1) + '.jpg',
-        likes: getRandom(15, 200),
-        comments: createObjectComments()
+      myUserPhotos.push({
+        url: userPhotos[i].url,
+        likes: userPhotos[i].likes,
+        comments: userPhotos[i].comments
       });
     }
-    return window.util.userPhotos;
+    return myUserPhotos;
+
   };
 
   var renderPhoto = function (photo) {
@@ -70,8 +29,9 @@
     return pictureElement;
   };
 
-  (function () {
-    var photos = createUserPhotos(window.util.PHOTOS_AMOUNT);
+
+  window.load(window.util.URL, function (userPhotos) {
+    var photos = createUserPhotos(userPhotos);
     var picturesTitleElement = document.querySelector('.pictures');
     var fragment = document.createDocumentFragment();
 
@@ -79,5 +39,5 @@
       fragment.appendChild(renderPhoto(photos[i]));
     }
     picturesTitleElement.appendChild(fragment);
-  })();
+  });
 })();
