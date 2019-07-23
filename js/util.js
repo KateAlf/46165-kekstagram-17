@@ -11,12 +11,6 @@
   var VALUE_MAX = 100;
   var URL = 'https://js.dump.academy/kekstagram/data';
 
-  var imgUpload = document.querySelector('.img-upload__overlay');
-  var imgPreview = document.querySelector('.img-upload__preview');
-  var effectSliderPin = document.querySelector('.effect-level__pin');
-  var effectLevelDepth = document.querySelector('.effect-level__depth');
-  var effectLevelInput = document.querySelector('.effect-level__value');
-
   window.util = {
     ESC_KEYCODE: ESC_KEYCODE,
     ENTER_KEYCODE: ENTER_KEYCODE,
@@ -27,13 +21,5 @@
     VALUE_STEP: VALUE_STEP,
     VALUE_MAX: VALUE_MAX,
     URL: URL,
-  };
-
-  window.elements = {
-    imgUpload: imgUpload,
-    imgPreview: imgPreview,
-    effectSliderPin: effectSliderPin,
-    effectLevelDepth: effectLevelDepth,
-    effectLevelInput: effectLevelInput
   };
 })();

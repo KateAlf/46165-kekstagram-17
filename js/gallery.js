@@ -1,7 +1,8 @@
 'use strict';
 
 (function () {
-  var createUserPhotos = function (userPhotos) {
+  window.initPictureGallery = function () {
+   var createUserPhotos = function (userPhotos) {
     var myUserPhotos = [];
     for (var i = 0; i < window.util.PHOTOS_AMOUNT; i++) {
       myUserPhotos.push({
@@ -37,4 +38,4 @@
     }
     picturesTitleElement.appendChild(fragment);
   });
-})();
+}})();
