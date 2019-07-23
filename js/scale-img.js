@@ -41,5 +41,5 @@
     scaleControlSmaller.addEventListener('click', function () {
       decreaseValue();
     });
-  }
+  };
 })();

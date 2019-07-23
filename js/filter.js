@@ -5,10 +5,8 @@
     var effectsList = document.querySelector('.effects__list');
     var effectsSlider = document.querySelector('.img-upload__effect-level');
     var imgPreview = document.querySelector('.img-upload__preview');
-    var imgUpload = document.querySelector('.img-upload__overlay');
     var effectSliderPin = document.querySelector('.effect-level__pin');
     var effectLevelDepth = document.querySelector('.effect-level__depth');
-    var effectLevelInput = document.querySelector('.effect-level__value');
     var currentEffect = '';
 
     effectsSlider.classList.add('hidden');
@@ -59,7 +57,6 @@
 
     (function () {
       var imgPreview = document.querySelector('.img-upload__preview');
-      var imgUpload = document.querySelector('.img-upload__overlay');
       var effectSliderPin = document.querySelector('.effect-level__pin');
       var effectLevelDepth = document.querySelector('.effect-level__depth');
       var effectLevelInput = document.querySelector('.effect-level__value');
@@ -132,5 +129,5 @@
         document.addEventListener('mouseup', onMouseUp);
       });
     })();
-  }
+  };
 })();
