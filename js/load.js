@@ -4,7 +4,10 @@
   window.load = function (URL, onSuccess) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-
+    xhr.timeout = 10000;
+    xhr.open('GET', URL);
+    xhr.send(null);
+    
     xhr.addEventListener('load', function () {
       switch (xhr.status) {
         case 200:
@@ -19,14 +22,13 @@
         case 404:
           window.onError('Данных не найдено');
           break;
-
         case 500:
           window.onError('Ошибка сервера');
           break;
 
         default:
           window.onError(
-              'Cтатус ответа: : ' + xhr.status + ' ' + xhr.statusText
+            'Cтатус ответа: : ' + xhr.status + ' ' + xhr.statusText
           );
       }
     });
@@ -36,9 +38,5 @@
     xhr.addEventListener('timeout', function () {
       window.onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
-    xhr.timeout = 10000;
-
-    xhr.open('GET', URL);
-    xhr.send(null);
   };
 })();

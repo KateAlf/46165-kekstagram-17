@@ -10,7 +10,6 @@
   var VALUE_STEP = 25;
   var VALUE_MAX = 100;
   var URL = 'https://js.dump.academy/kekstagram/data';
-  var userPhotos = [];
 
   var imgUpload = document.querySelector('.img-upload__overlay');
   var imgPreview = document.querySelector('.img-upload__preview');
@@ -28,7 +27,6 @@
     VALUE_STEP: VALUE_STEP,
     VALUE_MAX: VALUE_MAX,
     URL: URL,
-    userPhotos: userPhotos,
   };
 
   window.elements = {

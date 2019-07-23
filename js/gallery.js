@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-
   var createUserPhotos = function (userPhotos) {
     var myUserPhotos = [];
     for (var i = 0; i < window.util.PHOTOS_AMOUNT; i++) {
@@ -12,7 +11,6 @@
       });
     }
     return myUserPhotos;
-
   };
 
   var renderPhoto = function (photo) {
@@ -28,7 +26,6 @@
 
     return pictureElement;
   };
-
 
   window.load(window.util.URL, function (userPhotos) {
     var photos = createUserPhotos(userPhotos);

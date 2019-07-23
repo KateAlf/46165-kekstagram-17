@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-
   var effectsList = document.querySelector('.effects__list');
   var effectsSlider = document.querySelector('.img-upload__effect-level');
   var currentEffect = '';
