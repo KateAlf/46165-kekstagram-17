@@ -7,7 +7,7 @@
     xhr.timeout = 10000;
     xhr.open('GET', URL);
     xhr.send(null);
-    
+
     xhr.addEventListener('load', function () {
       switch (xhr.status) {
         case 200:
@@ -28,7 +28,7 @@
 
         default:
           window.onError(
-            'Cтатус ответа: : ' + xhr.status + ' ' + xhr.statusText
+              'Cтатус ответа: : ' + xhr.status + ' ' + xhr.statusText
           );
       }
     });

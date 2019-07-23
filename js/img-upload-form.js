@@ -21,6 +21,6 @@
         !hashtagsInput.matches(':focus')) {
         window.elements.imgUpload.classList.add('hidden');
       }
-    })
-  }
+    });
+  };
 })();
