@@ -24,7 +24,6 @@
         var targetEffect = target.value;
         addEffectToImg(targetEffect);
       }
-
       var applyFilterSettings = function (element, effect, value) {
         element.style.filter = effect + '(' + value + ')';
       };
@@ -56,9 +55,6 @@
     });
 
     (function () {
-      var imgPreview = document.querySelector('.img-upload__preview');
-      var effectSliderPin = document.querySelector('.effect-level__pin');
-      var effectLevelDepth = document.querySelector('.effect-level__depth');
       var effectLevelInput = document.querySelector('.effect-level__value');
 
       effectSliderPin.addEventListener('mousedown', function (evt) {
