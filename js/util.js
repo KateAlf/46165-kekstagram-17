@@ -6,8 +6,8 @@
   var PERCENT = 100;
   var LEVEL_LINE_WIDTH = 450;
   var VALUE_BEGINNING = 0;
-  var VALUE_STEP = 25;
   var VALUE_MAX = 100;
+  var VALUE_STEP = 25;
   var URL = 'https://js.dump.academy/kekstagram/data';
 
   window.util = {
