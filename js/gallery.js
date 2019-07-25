@@ -4,7 +4,7 @@
   window.initPictureGallery = function () {
     var createUserPhotos = function (userPhotos) {
       var myUserPhotos = [];
-      for (var i = 0; i < window.util.PHOTOS_AMOUNT; i++) {
+      for (var i = 0; i < userPhotos.length; i++) {
         myUserPhotos.push({
           url: userPhotos[i].url,
           likes: userPhotos[i].likes,

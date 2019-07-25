@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+
   window.initFilterSort = function () {
     var effectsList = document.querySelector('.effects__list');
     var effectsSlider = document.querySelector('.img-upload__effect-level');
@@ -54,7 +55,7 @@
       effectLevelDepth.style.width = '100%';
     });
 
-    (function () {
+    var moveSliderPin = function () {
       var effectLevelInput = document.querySelector('.effect-level__value');
 
       effectSliderPin.addEventListener('mousedown', function (evt) {
@@ -84,7 +85,6 @@
           } else {
             pinCoordinate = nextCoordinate + 'px';
           }
-
 
           effectSliderPin.style.left = pinCoordinate;
           effectLevelDepth.style.width = effectSliderPin.style.left;
@@ -124,6 +124,7 @@
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
       });
-    })();
+    };
+    moveSliderPin();
   };
 })();
