@@ -29,6 +29,8 @@
     };
 
     window.load(window.util.URL, function (userPhotos) {
+      var imgFilters = document.querySelector('.img-filters');
+      imgFilters.classList.remove('img-filters--inactive');
       var photos = createUserPhotos(userPhotos);
       var picturesTitleElement = document.querySelector('.pictures');
       var fragment = document.createDocumentFragment();
