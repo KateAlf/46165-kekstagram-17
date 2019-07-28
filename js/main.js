@@ -1,6 +1,6 @@
 'use strict';
 window.initPictureGallery();
-//window.initImgSorter();
+window.activateFilter();
 window.initImgScale();
 window.initFilterSort();
 window.initUploadForm();
