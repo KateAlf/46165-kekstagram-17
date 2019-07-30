@@ -76,7 +76,13 @@
     var showDiscussedFotos = function (array) {
       var arrayCopy = array.slice();
       arrayCopy.sort(function (first, second) {
-        return second.comments.length - first.comments.length;
+        if (first.comments.length > second.comments.length) {
+          return -1;
+        } else if (first.comments.length < second.comments.length) {
+          return 1;
+        } else {
+          return 0;
+        }
       });
       renderPhotos(arrayCopy);
     };
