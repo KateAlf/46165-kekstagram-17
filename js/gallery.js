@@ -74,8 +74,7 @@
     });
 
     var showDiscussedFotos = function (array) {
-      var arrayCopy = array.slice();
-      arrayCopy.sort(function (first, second) {
+      var arrayCopy = array.sort(function (first, second) {
         if (first.comments.length > second.comments.length) {
           return -1;
         } else if (first.comments.length < second.comments.length) {
