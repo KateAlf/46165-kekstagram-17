@@ -9,7 +9,8 @@
   var VALUE_BEGINNING = 0;
   var VALUE_MAX = 100;
   var VALUE_STEP = 25;
-  var URL = 'https://js.dump.academy/kekstagram/data';
+  var URL_GET = 'https://js.dump.academy/kekstagram/data';
+  var URL_POST = 'https://js.dump.academy/kekstagram';
 
   var debounce = function (fn) {
     var lastTimeout = null;
@@ -32,7 +33,8 @@
     VALUE_BEGINNING: VALUE_BEGINNING,
     VALUE_STEP: VALUE_STEP,
     VALUE_MAX: VALUE_MAX,
-    URL: URL,
+    URL_GET: URL_GET,
+    URL_POST: URL_POST,
     debounce: debounce
   };
 })();
