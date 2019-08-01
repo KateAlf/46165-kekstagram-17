@@ -12,7 +12,7 @@
   var bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
   var commentLink = bigPicture.querySelector('.social__comments-loader');
 
-  var showBigPhoto = function (imgBig) {
+  var showBigPicture = function (imgBig) {
     bigPicture.classList.remove('hidden');
     bigPictureImg.src = imgBig.url;
     bigPictureLikes.textContent = imgBig.likes;
@@ -89,19 +89,17 @@
     }
   };
 
-  var closeBigPhoto = function () {
+  var closeBigPicture = function () {
     bigPicture.classList.add('hidden');
     document.removeEventListener('keydown', window.util.onSectionEscPress);
   };
 
-  // показываем еще комментарии под фото
   commentLink.addEventListener('click', showMoreComments);
 
-  // закрываем большое изображение
-  bigPictureClose.addEventListener('click', closeBigPhoto);
+  bigPictureClose.addEventListener('click', closeBigPicture);
 
   window.bigphoto = {
-    show: showBigPhoto,
-    close: closeBigPhoto
+    show: showBigPicture,
+    close: closeBigPicture
   };
 })();

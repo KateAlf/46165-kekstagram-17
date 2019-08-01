@@ -1,26 +1,28 @@
 'use strict';
 
 (function () {
+  var Code = {
+    SUCCESS: 200,
+    INCORRECT_REQUEST: 400,
+    NOT_FOUND_ERROR: 404,
+    SERVER_ERROR: 500
+  };
 
   var serverResponse = function (xhr, onSuccess, onError) {
     xhr.addEventListener('load', function () {
       switch (xhr.status) {
-        case 200:
+        case Code.SUCCESS:
           onSuccess(xhr.response);
           break;
-        case 400:
+        case Code.INCORRECT_REQUEST:
           onError('Неверный запрос');
           break;
-        case 401:
-          onError('Пользователь не авторизован');
-          break;
-        case 404:
+        case Code.NOT_FOUND_ERROR:
           onError('Данных не найдено');
           break;
-        case 500:
+        case Code.SERVER_ERROR:
           onError('Ошибка сервера');
           break;
-
         default:
           onError(
               'Cтатус ответа: : ' + xhr.status + ' ' + xhr.statusText
@@ -35,7 +37,7 @@
     });
   };
 
-  window.load = function (URL, onSuccess) {
+  var load = function (URL, onSuccess) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     serverResponse(xhr, onSuccess);
@@ -44,11 +46,17 @@
     xhr.send(null);
   };
 
-  window.upload = function (data, onSuccess, onError) {
+  var upload = function (data, onSuccess, onError) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     serverResponse(xhr, onSuccess, onError);
     xhr.open('POST', window.util.URL_POST);
     xhr.send(data);
   };
+
+  window.server = {
+    load: load,
+    upload: upload
+  };
+
 })();
