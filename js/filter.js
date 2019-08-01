@@ -18,9 +18,6 @@
       effectsSlider.classList.remove('hidden');
       currentEffect = effect;
     };
-    var applyFilterSettings = function (element, effect, value) {
-      element.style.filter = effect + '(' + value + ')';
-    };
 
     effectsList.addEventListener('click', function (evt) {
       var target = evt.target;
@@ -28,6 +25,9 @@
         var targetEffect = target.value;
         addEffectToImg(targetEffect);
       }
+      var applyFilterSettings = function (element, effect, value) {
+        element.style.filter = effect + '(' + value + ')';
+      };
 
       switch (evt.target.value) {
         case 'none':
@@ -60,6 +60,7 @@
 
       effectSliderPin.addEventListener('mousedown', function (evt) {
         evt.preventDefault();
+
         var startCoords = {
           x: evt.clientX
         };
@@ -91,10 +92,12 @@
 
           switch (imgPreview.classList[1]) {
             case 'effects__preview--chrome':
-              applyFilterSettings(imgPreview, 'grayscale', parseInt(effectLevelInput.value, 10) / 100);
+              imgPreview.style.filter =
+                'grayscale(' + parseInt(effectLevelInput.value, 10) / 100 + ')';
               break;
             case 'effects__preview--sepia':
-              applyFilterSettings(imgPreview, 'sepia', effectLevelInput.value / 100);
+              imgPreview.style.filter =
+                'sepia(' + effectLevelInput.value / 100 + ')';
               break;
             case 'effects__preview--marvin':
               imgPreview.style.filter =
@@ -105,7 +108,10 @@
                 'blur(' + (effectLevelInput.value / 100) * 3 + 'px)';
               break;
             case 'effects__preview--heat':
-              applyFilterSettings(imgPreview, 'brightness', (effectLevelInput.value / 100) * 3);
+              imgPreview.style.filter =
+                'brightness(' +
+                (effectLevelInput.value / 100) * 3 +
+                ')';
               break;
           }
         };
