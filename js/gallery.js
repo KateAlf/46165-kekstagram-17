@@ -15,7 +15,9 @@
         myUserPhotos.push({
           url: userPhotos[i].url,
           likes: userPhotos[i].likes,
-          comments: userPhotos[i].comments
+          comments: userPhotos[i].comments,
+          description: userPhotos[i].description,
+
         });
       }
       return myUserPhotos;
@@ -61,7 +63,7 @@
       return array;
     };
 
-    window.load(window.util.URL, function (userPhotos) {
+    window.load(window.util.URL_GET, function (userPhotos) {
       imgFilters.classList.remove('img-filters--inactive');
       var photos = createUserPhotos(userPhotos);
       var picturesTitleElement = document.querySelector('.pictures');
@@ -106,10 +108,25 @@
       }
     };
 
+    var showBigPhoto = function (attribute) {
+      var newPhotos = myUserPhotos.filter(function (element) {
+        return element.url === attribute;
+      });
+      window.bigphoto.show(newPhotos[0]);
+    };
+
     var onFilterButtonClickDebounce = window.util.debounce(onFilterButtonClick);
 
     discussedPhotoFilter.addEventListener('click', onFilterButtonClickDebounce);
     popularPhotoFilter.addEventListener('click', onFilterButtonClickDebounce);
     newPhotoFilter.addEventListener('click', onFilterButtonClickDebounce);
+
+    similarListElement.addEventListener('click', function (evt) {
+      if (evt.target.classList.contains('picture__img')) {
+        var photoAttribute = evt.target.getAttribute('src');
+        showBigPhoto(photoAttribute);
+      }
+    });
   };
+
 })();

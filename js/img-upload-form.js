@@ -20,7 +20,7 @@
       if (evt.keyCode === window.util.ESC_KEYCODE &&
         !commentInput.matches(':focus') &&
         !hashtagsInput.matches(':focus')) {
-        window.elements.imgUpload.classList.add('hidden');
+        imgUpload.classList.add('hidden');
       }
     });
   };
