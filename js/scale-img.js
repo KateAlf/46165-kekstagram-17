@@ -11,9 +11,9 @@
 
     var decreaseValue = function () {
       var scaleSmaller = parseInt(scaleControlValue.value, 10) - window.util.VALUE_STEP;
-      if (scaleSmaller <= window.util.VALUE_BEGINNING) {
-        scaleSmaller = window.util.VALUE_BEGINNING;
-        setZoomValue(window.util.VALUE_BEGINNING);
+      if (scaleSmaller <= window.util.VALUE_MIN) {
+        scaleSmaller = window.util.VALUE_MIN;
+        setZoomValue(window.util.VALUE_MIN);
       } else {
         setZoomValue(scaleSmaller);
       }

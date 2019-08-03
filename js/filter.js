@@ -35,10 +35,10 @@
           effectsSlider.classList.add('hidden');
           break;
         case 'chrome':
-          applyFilterSettings(imgPreview, 'grayscale', 1);
+          applyFilterSettings(imgPreview, 'grayscale', window.util.MIN_INTENSITY);
           break;
         case 'sepia':
-          applyFilterSettings(imgPreview, 'sepia', 1);
+          applyFilterSettings(imgPreview, 'sepia', window.util.MIN_INTENSITY);
           break;
         case 'marvin':
           imgPreview.style.filter = 'invert(100%)';
@@ -47,7 +47,7 @@
           imgPreview.style.filter = 'blur(3px)';
           break;
         case 'heat':
-          applyFilterSettings(imgPreview, 'brightness', 3);
+          applyFilterSettings(imgPreview, 'brightness', window.util.MAX_INTENSITY);
           break;
       }
 
@@ -91,10 +91,10 @@
 
           switch (imgPreview.classList[1]) {
             case 'effects__preview--chrome':
-              applyFilterSettings(imgPreview, 'grayscale', parseInt(effectLevelInput.value, 10) / 100);
+              applyFilterSettings(imgPreview, 'grayscale', parseInt(effectLevelInput.value, 10) / window.util.PERCENT);
               break;
             case 'effects__preview--sepia':
-              applyFilterSettings(imgPreview, 'sepia', effectLevelInput.value / 100);
+              applyFilterSettings(imgPreview, 'sepia', effectLevelInput.value / window.util.PERCENT);
               break;
             case 'effects__preview--marvin':
               imgPreview.style.filter =
@@ -102,19 +102,19 @@
               break;
             case 'effects__preview--phobos':
               imgPreview.style.filter =
-                'blur(' + (effectLevelInput.value / 100) * 3 + 'px)';
+                'blur(' + (effectLevelInput.value / window.util.PERCENT) * window.util.MAX_INTENSITY + 'px)';
               break;
             case 'effects__preview--heat':
-              applyFilterSettings(imgPreview, 'brightness', (effectLevelInput.value / 100) * 3);
+              applyFilterSettings(imgPreview, 'brightness', (effectLevelInput.value / window.util.PERCENT) * window.util.MAX_INTENSITY);
               break;
           }
         };
         var onMouseUp = function (upEvt) {
           upEvt.preventDefault();
-
           document.removeEventListener('mousemove', onMouseMove);
           document.removeEventListener('mouseup', onMouseUp);
         };
+
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
       });

@@ -47,12 +47,15 @@
     comments.forEach(function (element) {
       var commentItem = createElement('li', 'social__comment');
       commentItem.style.display = 'none';
+
       var comment = createElement('p', 'social__text');
       var commentImg = createElement('img', 'social__picture');
+
       comment.textContent = element.message;
       commentImg.src = element.avatar;
       commentImg.alt = element.name;
       commentImg.width = AVATAR_WIDTH;
+
       bigPictureCommentsList.appendChild(commentItem);
       commentItem.appendChild(commentImg);
       commentItem.appendChild(comment);
@@ -71,6 +74,7 @@
     evt.preventDefault();
     var parentBlock = evt.target.parentNode;
     var commentItems = parentBlock.querySelectorAll('.social__comment');
+
     var newArray = Array.prototype.slice.call(commentItems);
     commentItems.forEach(function (element) {
       if (element.style.display === 'flex') {
@@ -78,12 +82,14 @@
       }
       return newArray;
     });
+
     newArray.forEach(function (element) {
       var idx = newArray.indexOf(element);
       if (idx >= 0 && idx < COMMENTS_SHOWN) {
         element.style.display = 'flex';
       }
     });
+
     if (newArray.length < COMMENTS_SHOWN) {
       commentLink.classList.add('hidden');
     }
@@ -91,7 +97,6 @@
 
   var closeBigPicture = function () {
     bigPicture.classList.add('hidden');
-    document.removeEventListener('keydown', window.util.onSectionEscPress);
   };
 
   commentLink.addEventListener('click', showMoreComments);

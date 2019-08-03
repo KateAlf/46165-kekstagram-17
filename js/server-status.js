@@ -27,7 +27,6 @@
       errorElement.querySelector('.error__buttons > button:last-child').classList.add('hidden');
       errorElement.querySelector('.error__title').textContent = message;
       mainPage.appendChild(errorElement);
-      document.addEventListener('keydown', window.util.onSectionEscPress);
       errorElement.addEventListener('click', function () {
         onSectionClick('error');
       });
@@ -45,7 +44,6 @@
       var sectionElement = document.querySelector('.' + section);
       mainPage.removeChild(sectionElement);
       document.removeEventListener('click', onSectionClick);
-      document.removeEventListener('keydown', window.util.onSectionEscPress);
     };
 
     var onSectionClick = function (section) {

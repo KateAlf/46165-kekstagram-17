@@ -11,10 +11,11 @@
     var imgPreviewContainer = imgUpload.querySelector('.img-upload__preview');
     var imgPreview = imgPreviewContainer.querySelector('img');
 
-    var checkHashtags = function () {
+    var onHashtagInputChange = function () {
       var hashtagValue = hashtag.value.replace(/\s+/g, ' ').trim().toLowerCase();
       var hashtagArray = hashtagValue.split(' ');
       var errorMessage;
+
       var repeatedHashtags = hashtagArray.filter(function (element, indexElement, array) {
         return indexElement !== array.indexOf(element) || indexElement !== array.lastIndexOf(element);
       });
@@ -59,7 +60,7 @@
 
     window.resetForm = resetForm;
 
-    hashtag.addEventListener('change', checkHashtags);
+    hashtag.addEventListener('change', onHashtagInputChange);
 
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();

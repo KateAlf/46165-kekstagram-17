@@ -1,6 +1,6 @@
 'use strict';
-window.initPictureGallery();
 window.initServerStatus();
+window.initPictureGallery();
 window.initImgScale();
 window.initFilterSort();
 window.initUploadForm();
