@@ -7,7 +7,6 @@
   var bigPictureDescription = bigPicture.querySelector('.social__caption');
   var bigPictureCommentsList = bigPicture.querySelector('.social__comments');
   var bigPictureCommentCount = bigPicture.querySelector('.social__comment-count');
-  var bigPictureCommentsCount = bigPicture.querySelector('.comments-count');
   var bigPictureImg = bigPicture.querySelector('img');
   var bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
   var commentLink = bigPicture.querySelector('.social__comments-loader');
@@ -22,7 +21,7 @@
     ) : (
       ' '
     );
-    
+
     bigPictureDescription.textContent = imgBig.description;
     showComments(imgBig.comments);
 
