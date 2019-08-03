@@ -133,5 +133,15 @@
         showBigPhoto(photoAttribute);
       }
     });
+    
+    var onsimilarListElementClick = function (evt) {
+      if (evt.keyCode === window.util.ENTER_KEYCODE && evt.target.classList.contains('picture')) {
+        var photo = evt.target.firstElementChild;
+        var photoAttribute = photo.getAttribute('src');
+        showBigPhoto(photoAttribute);
+      }
+    };
+
+    similarListElement.addEventListener('keydown', onsimilarListElementClick);
   };
 })();
